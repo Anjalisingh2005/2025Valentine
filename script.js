@@ -33,10 +33,10 @@ function nextQuestion(answer) {
         gifUrl = noGif; // Use the "No" GIF for all questions
     }
 
-    // After answering, show the GIF for 2 seconds
+    // After answering, show the GIF for 2 seconds on the next page
     showGifPage(gifUrl, answer);
 
-    // After the GIF has been shown, display the next question or the final message
+    // After the GIF is shown for 2 seconds, display the next question or the final message
     if (currentQuestion < questions.length) {
         setTimeout(() => {
             document.getElementById("question").textContent = questions[currentQuestion];
