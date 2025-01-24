@@ -9,7 +9,7 @@ const questions = [
 
 // Store GIF URLs for Yes answers (each question has its own GIF)
 const yesGifs = [
-    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVnazEzbXNqenNoenV3c2x3dHMyNG16bXIxMm8zNDIwcXpmM3l1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUOwFZoeMjnvff73fW/giphy.gif", // Question 1
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnc1MDRnbTc0NHY3c3BoOGc5bWZscTJlNTFtYnQ0eWJiYmlkdWZhNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/BSiEuA9dvmUy4nQiJ7/giphy.gif", // Question 1
     "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxiOXVtaHF0bmFyeDVyeXNocXJiNXYzMzF2YTkzZnhzcHo1NWg1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYOzHsY6M2Bbjck/giphy.gif", // Question 2
     "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG94a3U5NjZvbGI5MW9xN3FmcXQzYmVqcHprY3k4Y3U4azc3OTM5eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l49JFIqAYshRSD6tq/giphy.gif", // Question 3
     "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTI1aWUxeG9kcThmYTh1ZGMwbjQ1YmM1ZDM4ZnNxanBkY29yZXhqcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kLh4a3zmbKwthaSEzy/giphy.gif", // Question 4
