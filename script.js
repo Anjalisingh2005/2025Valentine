@@ -22,20 +22,6 @@ const noGif = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjd1Z291b3l5bHc
 // Store the link for before the proposal page
 const beforeProposalGif = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmJqMWs1bTJrOWVxNnZ4OHR1cnFtbXNjNXdjcXNzdDRkcmh3cDBjcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gW3ecy6IOI4abgmDdR/giphy.gif";
 
-const heartContainer = document.getElementById("heartContainer");
-
-function createHeart(gifUrl) {
-    const heart = document.createElement("img");
-    heart.classList.add("heart");
-    heart.src = gifUrl;
-    heart.alt = "Floating heart GIF";
-    heartContainer.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 3000); // Remove heart after 3 seconds
-}
-
 function nextQuestion(answer) {
     currentQuestion++;
 
@@ -47,24 +33,47 @@ function nextQuestion(answer) {
         gifUrl = noGif; // Use the "No" GIF for all questions
     }
 
-    // Delay the appearance of the GIF by 1 second (1000 ms)
-    setTimeout(() => {
-        createHeart(gifUrl); // Display GIF after the delay
-    }, 1000); // 1-second delay between the answer and GIF
+    // After answering, show a new page with the GIF
+    showGifPage(gifUrl, answer);
 
     // Show the next question or final page if all questions are answered
     if (currentQuestion < questions.length) {
         document.getElementById("question").textContent = questions[currentQuestion];
     } else {
-        document.getElementById("questionContainer").innerHTML = ""; // Remove any previous content
+        document.getElementById("questionContainer").innerHTML = "<p>Yay! Here's the big reveal...</p>";
         displayFinalMessage();
     }
+}
+
+function showGifPage(gifUrl, answer) {
+    // Hide the current question page and create a new page for the GIF
+    const newPage = document.createElement('div');
+    newPage.classList.add('gifPage');
+
+    // Add the response message and the GIF
+    const responseMessage = document.createElement('p');
+    responseMessage.textContent = `You answered: ${answer.toUpperCase()}`;
+    newPage.appendChild(responseMessage);
+
+    const gifElement = document.createElement('img');
+    gifElement.src = gifUrl;
+    gifElement.alt = "Heart GIF";
+    gifElement.classList.add('gifImage');  // Add class for styling
+
+    newPage.appendChild(gifElement);
+    document.body.appendChild(newPage); // Append the new page with the GIF
+
+    // Add a delay before the next page is shown (adjust the time as necessary)
+    setTimeout(() => {
+        // Remove the GIF page after some time and move to the next question
+        newPage.remove();
+    }, 5000);  // GIF stays for 5 seconds
 }
 
 function displayFinalMessage() {
     const finalMessage = document.createElement("div");
     finalMessage.classList.add("finalMessage");
-    finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>"; // Keep only the final message
+    finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>";
 
     // Display before proposal GIF
     const surpriseGif = document.createElement("img");
@@ -73,6 +82,5 @@ function displayFinalMessage() {
     surpriseGif.classList.add("finalGif");
 
     finalMessage.appendChild(surpriseGif);
-
-    document.body.appendChild(finalMessage); // Append the final message with GIF
+    document.body.appendChild(finalMessage);
 }
