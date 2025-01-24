@@ -47,15 +47,16 @@ function nextQuestion(answer) {
         gifUrl = noGif; // Use the "No" GIF for all questions
     }
 
-    createHeart(gifUrl); // Display GIF when answering
+    // Delay the appearance of the GIF by 1 second (1000 ms)
+    setTimeout(() => {
+        createHeart(gifUrl); // Display GIF after the delay
+    }, 1000); // 1-second delay between the answer and GIF
 
     // Show the next question or final page if all questions are answered
     if (currentQuestion < questions.length) {
         document.getElementById("question").textContent = questions[currentQuestion];
-        document.getElementById("responseMessage").textContent = `You answered: ${answer.toUpperCase()}`;
     } else {
         document.getElementById("questionContainer").innerHTML = ""; // Remove any previous content
-        document.getElementById("responseMessage").innerHTML = ""; // Remove any previous response message
         displayFinalMessage();
     }
 }
