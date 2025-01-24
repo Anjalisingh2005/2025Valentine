@@ -7,6 +7,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 10px; /* Added padding for small screens */
+    box-sizing: border-box;
 }
 
 .container {
@@ -15,8 +17,9 @@ body {
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 80%;
+    width: 100%; /* Make sure it adjusts based on screen width */
     max-width: 600px;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -39,6 +42,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.1em;
+    width: 100%; /* Full-width button on smaller screens */
+    box-sizing: border-box;
 }
 
 button:hover {
@@ -52,6 +57,7 @@ button:hover {
 .buttons {
     display: flex;
     justify-content: center;
+    gap: 10px; /* Added gap between buttons */
 }
 
 #heartContainer {
@@ -101,4 +107,60 @@ button:hover {
     font-weight: bold;
     text-decoration: none;
     font-size: 1.2em;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Slightly smaller heading */
+    }
+
+    p {
+        font-size: 1.1em; /* Slightly smaller paragraph text */
+    }
+
+    .container {
+        padding: 15px; /* Less padding on small screens */
+        width: 90%; /* Make container width 90% on small screens */
+    }
+
+    button {
+        padding: 12px 20px; /* Adjust button padding for small screens */
+    }
+
+    .buttons {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+    }
+
+    .heart {
+        font-size: 2.5em; /* Smaller heart animation */
+    }
+
+    .finalMessage {
+        font-size: 1.3em; /* Slightly smaller final message */
+    }
+}
+
+/* Responsive design for very small screens (e.g., phones) */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em; /* Smaller heading */
+    }
+
+    p {
+        font-size: 1em; /* Smaller paragraph text */
+    }
+
+    .container {
+        width: 100%; /* Make the container take full width */
+    }
+
+    button {
+        padding: 10px 15px; /* Smaller button padding */
+        font-size: 1em; /* Smaller font size */
+    }
+
+    .finalMessage {
+        font-size: 1.2em; /* Smaller final message */
+    }
 }
