@@ -60,3 +60,39 @@ function displayFinalMessage() {
     finalMessage.appendChild(surpriseLink);
     document.body.appendChild(finalMessage);
 }
+
+function createHeart() {
+    const heart = document.createElement("img");
+    heart.classList.add("heart");
+    heart.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxiOXVtaHF0bmFyeDVyeXNocXJiNXYzMzF2YTkzZnhzcHo1NWg1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYOzHsY6M2Bbjck/giphy.gif"; // Updated heart GIF URL
+    heart.alt = "Floating heart GIF";
+    heartContainer.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 3000); // Remove heart after 3 seconds
+}
+
+function displayFinalMessage() {
+    const finalMessage = document.createElement("div");
+    finalMessage.classList.add("finalMessage");
+    finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>";
+
+    // Add final surprise GIF (e.g., celebration GIF)
+    const surpriseGif = document.createElement("img");
+    surpriseGif.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxiOXVtaHF0bmFyeDVyeXNocXJiNXYzMzF2YTkzZnhzcHo1NWg1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYOzHsY6M2Bbjck/giphy.gif"; // Updated surprise GIF URL
+    surpriseGif.alt = "Celebration GIF";
+    surpriseGif.classList.add("finalGif");
+
+    finalMessage.appendChild(surpriseGif);
+
+    // Surprise link for gift or proposal
+    const surpriseLink = document.createElement("a");
+    surpriseLink.href = "#"; // Replace with actual link to a surprise or proposal page
+    surpriseLink.classList.add("surpriseLink");
+    surpriseLink.textContent = "Click here for a surprise gift 🎁";
+    
+    finalMessage.appendChild(surpriseLink);
+    document.body.appendChild(finalMessage);
+}
+
