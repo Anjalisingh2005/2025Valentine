@@ -49,7 +49,7 @@ function nextQuestion(answer) {
         } else {
             displayFinalMessage(); // Show final message after all questions
         }
-    }, 2500); // Show GIF for 2.5 seconds
+    }, 2000); // Show GIF for 2.5 seconds
 }
 
 function showGifPage(gifUrl) {
@@ -70,7 +70,7 @@ function showGifPage(gifUrl) {
     // Remove the GIF page after 2.5 seconds
     setTimeout(() => {
         gifPage.remove();
-    }, 2500);
+    }, 2000);
 }
 
 function displayFinalMessage() {
