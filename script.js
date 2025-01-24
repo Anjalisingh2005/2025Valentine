@@ -23,55 +23,54 @@ const noGif = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjd1Z291b3l5bHc
 const beforeProposalGif = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmJqMWs1bTJrOWVxNnZ4OHR1cnFtbXNjNXdjcXNzdDRkcmh3cDBjcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gW3ecy6IOI4abgmDdR/giphy.gif";
 
 function nextQuestion(answer) {
-    currentQuestion++;
+    // Hide the current question page
+    const questionContainer = document.getElementById("questionContainer");
+    questionContainer.style.display = 'none'; // Hide current question
 
-    // Use the correct GIF for "Yes" or "No" answer
+    // Determine the appropriate GIF based on the answer
     let gifUrl;
     if (answer === 'yes') {
-        gifUrl = yesGifs[currentQuestion - 1]; // Get the appropriate "Yes" GIF based on the question
+        gifUrl = yesGifs[currentQuestion]; // Get the appropriate "Yes" GIF based on the question
     } else {
         gifUrl = noGif; // Use the "No" GIF for all questions
     }
 
-    // After answering, show the GIF for 2 seconds on the next page
-    showGifPage(gifUrl, answer);
+    // Show the GIF page
+    showGifPage(gifUrl);
 
-    // After the GIF is shown for 2 seconds, display the next question or the final message
-    if (currentQuestion < questions.length) {
-        setTimeout(() => {
+    // Wait for 2.5 seconds before showing the next question
+    setTimeout(() => {
+        currentQuestion++;
+
+        // After 2.5 sec, show the next question or the final page
+        if (currentQuestion < questions.length) {
             document.getElementById("question").textContent = questions[currentQuestion];
-        }, 2500);  // Wait for 2.5 seconds after GIF before showing next question
-    } else {
-        setTimeout(displayFinalMessage, 2500);  // After the last question, show the final proposal message
-    }
+            questionContainer.style.display = 'block'; // Show next question
+        } else {
+            displayFinalMessage(); // Show final message after all questions
+        }
+    }, 2500); // Show GIF for 2.5 seconds
 }
 
-function showGifPage(gifUrl, answer) {
-    // Remove the current question page immediately
-    const questionContainer = document.getElementById("questionContainer");
-    questionContainer.innerHTML = ""; // Clear out the current question
-
+function showGifPage(gifUrl) {
     // Create a new page for the GIF
-    const newPage = document.createElement('div');
-    newPage.classList.add('gifPage');
+    const gifPage = document.createElement('div');
+    gifPage.classList.add('gifPage');
 
-    // Add the response message and the GIF
-    const responseMessage = document.createElement('p');
-    responseMessage.textContent = `You answered: ${answer.toUpperCase()}`;
-    newPage.appendChild(responseMessage);
-
+    // Add the GIF element
     const gifElement = document.createElement('img');
     gifElement.src = gifUrl;
-    gifElement.alt = "Heart GIF";
-    gifElement.classList.add('gifImage');  // Add class for styling
+    gifElement.alt = "Answer GIF";
+    gifElement.classList.add('gifImage'); // Add class for styling
+    gifPage.appendChild(gifElement);
+    
+    // Append to body
+    document.body.appendChild(gifPage);
 
-    newPage.appendChild(gifElement);
-    document.body.appendChild(newPage); // Append the new page with the GIF
-
-    // Remove the GIF page after 2 seconds
+    // Remove the GIF page after 2.5 seconds
     setTimeout(() => {
-        newPage.remove();
-    }, 2000);  // GIF stays for 2 seconds
+        gifPage.remove();
+    }, 2500);
 }
 
 function displayFinalMessage() {
