@@ -63,7 +63,7 @@ function nextQuestion(answer) {
 function displayFinalMessage() {
     const finalMessage = document.createElement("div");
     finalMessage.classList.add("finalMessage");
-    finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>";
+    finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>"; // Keep only the final message
 
     // Display before proposal GIF
     const surpriseGif = document.createElement("img");
@@ -73,5 +73,5 @@ function displayFinalMessage() {
 
     finalMessage.appendChild(surpriseGif);
 
-    document.body.appendChild(finalMessage);
+    document.body.appendChild(finalMessage); // Append the final message with GIF
 }
