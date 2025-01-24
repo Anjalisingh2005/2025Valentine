@@ -16,7 +16,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     background-color: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     width: 100%; /* Make sure it adjusts based on screen width */
     max-width: 600px;
     box-sizing: border-box;
@@ -141,7 +141,7 @@ button:hover {
     }
 
     /* Ensure GIFs do not overflow on mobile screens */
-    .heart, .finalGif {
+    .heart, .finalGif, .gifImage {
         max-width: 90%; /* Set max-width for the GIFs */
         max-height: 50vh; /* Set max height to 50% of the screen height */
         object-fit: contain; /* Maintain aspect ratio */
@@ -172,7 +172,7 @@ button:hover {
     }
 
     /* Ensure GIFs do not overflow on very small screens */
-    .heart, .finalGif {
+    .heart, .finalGif, .gifImage {
         max-width: 80%; /* Limit width of GIFs even more on very small screens */
         max-height: 40vh; /* Limit max height on very small screens */
         object-fit: contain; /* Maintain aspect ratio */
