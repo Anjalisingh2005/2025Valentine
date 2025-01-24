@@ -30,22 +30,12 @@
         <div id="responseMessage"></div>
     </div>
 
+    <script src="script.js"></script>
     <script>
         // Function to play the audio when the button is clicked
         function playAudio() {
             var audio = document.getElementById('backgroundMusic');
             audio.play();
-        }
-        
-        // Function to handle next question logic (placeholder, to be implemented)
-        function nextQuestion(answer) {
-            // Add your next question logic here
-            const responseMessage = document.getElementById('responseMessage');
-            if (answer === 'yes') {
-                responseMessage.innerHTML = 'You said Yes! 💖';
-            } else {
-                responseMessage.innerHTML = 'You said No... 😢';
-            }
         }
     </script>
 </body>
