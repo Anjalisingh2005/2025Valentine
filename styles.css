@@ -5,6 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
     padding: 10px; /* Added padding for small screens */
@@ -17,7 +18,7 @@ body {
     border-radius: 10px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Make sure it adjusts based on screen width */
+    width: 100%;
     max-width: 600px;
     box-sizing: border-box;
 }
