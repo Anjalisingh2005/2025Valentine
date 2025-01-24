@@ -7,12 +7,27 @@ const questions = [
     "Will you be my Valentine?"
 ];
 
+// Store GIF URLs for Yes answers (each question has its own GIF)
+const yesGifs = [
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExczVnazEzbXNqenNoenV3c2x3dHMyNG16bXIxMm8zNDIwcXpmM3l1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xUOwFZoeMjnvff73fW/giphy.gif", // Question 1
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxiOXVtaHF0bmFyeDVyeXNocXJiNXYzMzF2YTkzZnhzcHo1NWg1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYOzHsY6M2Bbjck/giphy.gif", // Question 2
+    "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG94a3U5NjZvbGI5MW9xN3FmcXQzYmVqcHprY3k4Y3U4azc3OTM5eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l49JFIqAYshRSD6tq/giphy.gif", // Question 3
+    "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTI1aWUxeG9kcThmYTh1ZGMwbjQ1YmM1ZDM4ZnNxanBkY29yZXhqcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kLh4a3zmbKwthaSEzy/giphy.gif", // Question 4
+    "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzhlbjVweTQydXRiZWlrazM0MTNwazZhamx4cDBpb3Eyd3l4bGx3biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26DNbGHpjisiBmdPi/giphy.gif"  // Question 5
+];
+
+// Store GIF URLs for No answers (same for all questions)
+const noGif = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjd1Z291b3l5bHcybWI5aHQzbW50anF5aW9ia3M2bzl1bG1kODQ0aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l1KVaj5UcbHwrBMqI/giphy.gif";
+
+// Store the link for before the proposal page
+const beforeProposalGif = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmJqMWs1bTJrOWVxNnZ4OHR1cnFtbXNjNXdjcXNzdDRkcmh3cDBjcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gW3ecy6IOI4abgmDdR/giphy.gif";
+
 const heartContainer = document.getElementById("heartContainer");
 
-function createHeart() {
+function createHeart(gifUrl) {
     const heart = document.createElement("img");
     heart.classList.add("heart");
-    heart.src = "https://media.giphy.com/media/9t3YYpQyDiEpo/giphy.gif"; // You can replace this with your own heart GIF
+    heart.src = gifUrl;
     heart.alt = "Floating heart GIF";
     heartContainer.appendChild(heart);
 
@@ -24,10 +39,17 @@ function createHeart() {
 function nextQuestion(answer) {
     currentQuestion++;
 
+    // Use the correct GIF for "Yes" or "No" answer
+    let gifUrl;
     if (answer === 'yes') {
-        createHeart(); // Display floating heart GIF when "Yes" is clicked
+        gifUrl = yesGifs[currentQuestion - 1]; // Get the appropriate "Yes" GIF based on the question
+    } else {
+        gifUrl = noGif; // Use the "No" GIF for all questions
     }
 
+    createHeart(gifUrl); // Display GIF when answering
+
+    // Show the next question or final page if all questions are answered
     if (currentQuestion < questions.length) {
         document.getElementById("question").textContent = questions[currentQuestion];
         document.getElementById("responseMessage").textContent = `You answered: ${answer.toUpperCase()}`;
@@ -42,11 +64,11 @@ function displayFinalMessage() {
     const finalMessage = document.createElement("div");
     finalMessage.classList.add("finalMessage");
     finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>";
-    
-    // Add final surprise GIF (e.g., celebration GIF)
+
+    // Display before proposal GIF
     const surpriseGif = document.createElement("img");
-    surpriseGif.src = "https://media.giphy.com/media/26tPojvLvIuYpA5QY/giphy.gif"; // Replace with your desired surprise GIF
-    surpriseGif.alt = "Celebration GIF";
+    surpriseGif.src = beforeProposalGif;
+    surpriseGif.alt = "Proposal GIF";
     surpriseGif.classList.add("finalGif");
 
     finalMessage.appendChild(surpriseGif);
@@ -56,43 +78,7 @@ function displayFinalMessage() {
     surpriseLink.href = "#"; // Replace with actual link to a surprise or proposal page
     surpriseLink.classList.add("surpriseLink");
     surpriseLink.textContent = "Click here for a surprise gift 🎁";
-    
+
     finalMessage.appendChild(surpriseLink);
     document.body.appendChild(finalMessage);
 }
-
-function createHeart() {
-    const heart = document.createElement("img");
-    heart.classList.add("heart");
-    heart.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxiOXVtaHF0bmFyeDVyeXNocXJiNXYzMzF2YTkzZnhzcHo1NWg1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYOzHsY6M2Bbjck/giphy.gif"; // Updated heart GIF URL
-    heart.alt = "Floating heart GIF";
-    heartContainer.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 3000); // Remove heart after 3 seconds
-}
-
-function displayFinalMessage() {
-    const finalMessage = document.createElement("div");
-    finalMessage.classList.add("finalMessage");
-    finalMessage.innerHTML = "<p>💖 You’ve captured my heart! Will you be mine forever?</p>";
-
-    // Add final surprise GIF (e.g., celebration GIF)
-    const surpriseGif = document.createElement("img");
-    surpriseGif.src = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWxiOXVtaHF0bmFyeDVyeXNocXJiNXYzMzF2YTkzZnhzcHo1NWg1cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l0MYOzHsY6M2Bbjck/giphy.gif"; // Updated surprise GIF URL
-    surpriseGif.alt = "Celebration GIF";
-    surpriseGif.classList.add("finalGif");
-
-    finalMessage.appendChild(surpriseGif);
-
-    // Surprise link for gift or proposal
-    const surpriseLink = document.createElement("a");
-    surpriseLink.href = "#"; // Replace with actual link to a surprise or proposal page
-    surpriseLink.classList.add("surpriseLink");
-    surpriseLink.textContent = "Click here for a surprise gift 🎁";
-    
-    finalMessage.appendChild(surpriseLink);
-    document.body.appendChild(finalMessage);
-}
-
