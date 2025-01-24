@@ -38,10 +38,11 @@ function nextQuestion(answer) {
 
     // Show the next question or final page if all questions are answered
     if (currentQuestion < questions.length) {
-        document.getElementById("question").textContent = questions[currentQuestion];
+        setTimeout(() => {
+            document.getElementById("question").textContent = questions[currentQuestion];
+        }, 500); // Wait a bit before showing the next question
     } else {
-        document.getElementById("questionContainer").innerHTML = "<p>Yay! Here's the big reveal...</p>";
-        displayFinalMessage();
+        setTimeout(displayFinalMessage, 500); // After the last question, show the final proposal
     }
 }
 
@@ -65,8 +66,7 @@ function showGifPage(gifUrl, answer) {
 
     // Add a delay before the next page is shown (adjust the time as necessary)
     setTimeout(() => {
-        // Remove the GIF page after some time and move to the next question
-        newPage.remove();
+        newPage.remove(); // Remove the current GIF page after the delay
     }, 5000);  // GIF stays for 5 seconds
 }
 
