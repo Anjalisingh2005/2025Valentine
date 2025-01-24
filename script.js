@@ -33,21 +33,25 @@ function nextQuestion(answer) {
         gifUrl = noGif; // Use the "No" GIF for all questions
     }
 
-    // After answering, show a new page with the GIF
+    // After answering, show the GIF for 2 seconds
     showGifPage(gifUrl, answer);
 
-    // Show the next question or final page if all questions are answered
+    // After the GIF has been shown, display the next question or the final message
     if (currentQuestion < questions.length) {
         setTimeout(() => {
             document.getElementById("question").textContent = questions[currentQuestion];
-        }, 2500); // Wait for 2.5 seconds before showing the next question to allow GIF display time
+        }, 2500);  // Wait for 2.5 seconds after GIF before showing next question
     } else {
-        setTimeout(displayFinalMessage, 2500); // After the last question, show the final proposal
+        setTimeout(displayFinalMessage, 2500);  // After the last question, show the final proposal message
     }
 }
 
 function showGifPage(gifUrl, answer) {
-    // Hide the current question page and create a new page for the GIF
+    // Remove the current question page immediately
+    const questionContainer = document.getElementById("questionContainer");
+    questionContainer.innerHTML = ""; // Clear out the current question
+
+    // Create a new page for the GIF
     const newPage = document.createElement('div');
     newPage.classList.add('gifPage');
 
@@ -64,9 +68,9 @@ function showGifPage(gifUrl, answer) {
     newPage.appendChild(gifElement);
     document.body.appendChild(newPage); // Append the new page with the GIF
 
-    // Add a delay before the next page is shown (adjust the time as necessary)
+    // Remove the GIF page after 2 seconds
     setTimeout(() => {
-        newPage.remove(); // Remove the current GIF page after 2 seconds
+        newPage.remove();
     }, 2000);  // GIF stays for 2 seconds
 }
 
