@@ -139,6 +139,13 @@ button:hover {
     .finalMessage {
         font-size: 1.3em; /* Slightly smaller final message */
     }
+
+    /* Ensure GIFs do not overflow on mobile screens */
+    .heart, .finalGif {
+        max-width: 90%; /* Set max-width for the GIFs */
+        max-height: 50vh; /* Set max height to 50% of the screen height */
+        object-fit: contain; /* Maintain aspect ratio */
+    }
 }
 
 /* Responsive design for very small screens (e.g., phones) */
@@ -162,5 +169,12 @@ button:hover {
 
     .finalMessage {
         font-size: 1.2em; /* Smaller final message */
+    }
+
+    /* Ensure GIFs do not overflow on very small screens */
+    .heart, .finalGif {
+        max-width: 80%; /* Limit width of GIFs even more on very small screens */
+        max-height: 40vh; /* Limit max height on very small screens */
+        object-fit: contain; /* Maintain aspect ratio */
     }
 }
