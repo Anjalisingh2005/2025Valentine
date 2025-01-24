@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Proposal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <p>Answer these questions with love ❤️</p>
+        <div id="questionContainer">
+            <p id="question">Is it love at first sight?</p>
+            <div class="buttons">
+                <button onclick="nextQuestion('yes')">Yes</button>
+                <button onclick="nextQuestion('no')">No</button>
+            </div>
+            <div id="heartContainer"></div>
+        </div>
+        <div id="responseMessage"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
