@@ -54,8 +54,8 @@ function nextQuestion(answer) {
         document.getElementById("question").textContent = questions[currentQuestion];
         document.getElementById("responseMessage").textContent = `You answered: ${answer.toUpperCase()}`;
     } else {
-        document.getElementById("questionContainer").innerHTML = "<p>Yay! Here's the big reveal...</p>";
-        document.getElementById("responseMessage").innerHTML = "<p>💘 You said YES to every question! Now, will you be mine?</p>";
+        document.getElementById("questionContainer").innerHTML = ""; // Remove any previous content
+        document.getElementById("responseMessage").innerHTML = ""; // Remove any previous response message
         displayFinalMessage();
     }
 }
@@ -73,12 +73,5 @@ function displayFinalMessage() {
 
     finalMessage.appendChild(surpriseGif);
 
-    // Surprise link for gift or proposal
-    const surpriseLink = document.createElement("a");
-    surpriseLink.href = "#"; // Replace with actual link to a surprise or proposal page
-    surpriseLink.classList.add("surpriseLink");
-    surpriseLink.textContent = "Click here for a surprise gift 🎁";
-
-    finalMessage.appendChild(surpriseLink);
     document.body.appendChild(finalMessage);
 }
